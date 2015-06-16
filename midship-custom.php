@@ -164,7 +164,7 @@ add_filter( 'the_author_posts_link', 'midship_filter_the_author_posts_link' );
  */
 function midship_singular_byline( $content ) {
 
-	if( is_front_page() || is_archive() || is_tax() || ! is_singlular() ){
+	if( is_front_page() || is_archive() || is_tax() ){
 		return $content;
 	}
 
