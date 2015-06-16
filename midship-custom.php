@@ -155,17 +155,17 @@ function midship_filter_the_author_posts_link ( $link ){
 
 	//return $link;
 }
-add_filter( 'the_author_posts_link', 'midship_filter_the_author_posts_link' );
+//add_filter( 'the_author_posts_link', 'midship_filter_the_author_posts_link' );
 
 
-
+/**
+ * [midship_singular_byline description]
+ * @param  [type] $content [description]
+ * @return [type]          [description]
+ */
 function midship_singular_byline( $content ) {
-
-
-	$content = 'Courtesy of ' . get_the_author_link() . ' via ' . midship_get_accredited_source_link() . $content;
-
-
-	return $content;
+	$new_content = '<p>Courtesy of ' . get_the_author_link() . ' via ' . midship_get_accredited_source_link() . '</p>';
+	return $new_content . $content;
 }
 add_filter( 'the_content', 'midship_singular_byline', 10 );
 
