@@ -237,7 +237,7 @@ function midship_accredit_source( $content ) {
 //add_filter( 'the_content', 'midship_accredit_source', 11 );
 
 function midship_banner_ad( $content ){
-		$ad = '<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+		$ad = '<div style="width:100%"><script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 		<!-- Midship Responsive -->
 		<ins class="adsbygoogle"
 		     style="display:block"
@@ -246,7 +246,7 @@ function midship_banner_ad( $content ){
 		     data-ad-format="auto"></ins>
 		<script>
 		(adsbygoogle = window.adsbygoogle || []).push({});
-		</script>';
+		</script></div>';
 
 		return $ad . $content;
 }
