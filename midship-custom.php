@@ -236,6 +236,22 @@ function midship_accredit_source( $content ) {
 }
 //add_filter( 'the_content', 'midship_accredit_source', 11 );
 
+function midship_banner_ad( $content ){
+		$ad = '<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+		<!-- Midship Responsive -->
+		<ins class="adsbygoogle"
+		     style="display:block"
+		     data-ad-client="ca-pub-4187229811122687"
+		     data-ad-slot="7398026302"
+		     data-ad-format="auto"></ins>
+		<script>
+		(adsbygoogle = window.adsbygoogle || []).push({});
+		</script>';
+
+		return $ad . $content;
+}
+add_filter( 'the_content', 'midship_banner_ad', 9 );
+
 /**
  * [midship_content_disclaimer description]
  * @param  [type] $content [description]
