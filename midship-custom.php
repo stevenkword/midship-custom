@@ -242,10 +242,6 @@ function midship_render_content_header( $content ){
 
 	$new_content = midship_get_singular_byline();
 
-	ob_start();
-	echo '<div class="navigation"><p><?php posts_nav_link(); ?></p></div>';
-	$new_content .= ob_get_clean();
-
 	return $new_content . $content;
 
 }
