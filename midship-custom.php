@@ -164,8 +164,8 @@ add_filter( 'the_author_posts_link', 'midship_filter_the_author_posts_link' );
  * @return [type]          [description]
  */
 function midship_accredit_source( $content ) {
-	// Only show on single article pages, but not print pages
-	if( ! is_singular() || ( function_exists( 'is_print' ) && is_print() ) ) {
+	// Only show on single article pages
+	if( ! is_singular() ) {
 		return $content;
 	}
 
