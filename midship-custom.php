@@ -122,7 +122,7 @@ function midship_filter_the_author ( $authordata ) {
 
 	return $authordata->display_name;
 }
-//add_filter( 'the_author', 'midship_filter_the_author' );
+add_filter( 'the_author', 'midship_filter_the_author' );
 
 function midship_filter_author_link( $link, $author_id, $author_nicename ) {
 
