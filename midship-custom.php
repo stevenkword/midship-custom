@@ -180,7 +180,11 @@ function midship_singular_byline( $content ) {
 	} else {
 		$pieces[] = 'Courtesy of ' . $link;
 	}
-	$pieces[] = '<a href="print/">Print</a>';
+
+	if( ! function_exists( 'is_print' ) || ! is_print() ) {
+		$pieces[] = '<a href="print/">Print</a>';
+	}
+
 	$new_content = implode( ' | ' , $pieces );
 	return '<p>' . $new_content . '</p>' . $content;
 }
