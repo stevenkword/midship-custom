@@ -116,10 +116,8 @@ add_action( 'updated_option', 'midship_flush_cache' );
 function midship_filter_the_author ( $authordata ) {
 	$meta = get_post_meta( get_the_ID(), 'articleAuthor' );
 
-var_dump($meta);
-
 	if( isset( $meta[0] ) && ! empty( $meta[0] ) ) {
-		return esc_html( $meta[0] );
+		return esc_html( $meta[0] . ' of ' );
 	}
 
 	return $authordata->display_name;
