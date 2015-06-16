@@ -116,13 +116,15 @@ add_action( 'updated_option', 'midship_flush_cache' );
 function midship_filter_the_author ( $authordata ) {
 	$meta = get_post_meta( get_the_ID(), 'articleAuthor' );
 
+var_dump($meta);
+
 	if( isset( $meta[0] ) && ! empty( $meta[0] ) ) {
 		return esc_html( $meta[0] );
 	}
 
 	return $authordata->display_name;
 }
-//add_filter( 'the_author', 'midship_filter_the_author' );
+add_filter( 'the_author', 'midship_filter_the_author' );
 
 function midship_filter_author_link( $link, $author_id, $author_nicename ) {
 
