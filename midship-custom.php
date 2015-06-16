@@ -116,6 +116,7 @@ add_action( 'updated_option', 'midship_flush_cache' );
 function midship_filter_the_author ( $authordata ) {
 	$meta = get_post_meta( get_the_ID(), 'articleAuthor' );
 
+var_dump($meta);
 return 'Steven';
 
 
