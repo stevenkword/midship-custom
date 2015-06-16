@@ -135,25 +135,24 @@ function midship_filter_author_link( $link, $author_id, $author_nicename ) {
 }
 //add_filter( 'author_link', 'midship_filter_author_link', 10, 3 );
 
+/**
+ * [midship_filter_the_author_posts_link description]
+ * @param  [type] $link [description]
+ * @return [type]       [description]
+ */
 function midship_filter_the_author_posts_link ( $link ){
 
 	if( strpos( $link, 'vatik' ) ) {
-
 		global $authordata;
 		$author_name = $authordata->display_name;
-
 		$meta = get_post_meta( get_the_ID(), 'articleAuthor' );
 		if( isset( $meta[0] ) && ! empty( $meta[0] ) ) {
 			$author_name = esc_html( $meta[0] );
 		}
-
 		return '<a href="#/">' . $author_name . '</a>';
 	}
-
 	// BuddyPressify the author links
 	return str_replace( 'author', 'members', $link );
-
-	//return $link;
 }
 add_filter( 'the_author_posts_link', 'midship_filter_the_author_posts_link' );
 
@@ -166,7 +165,7 @@ add_filter( 'the_author_posts_link', 'midship_filter_the_author_posts_link' );
 function midship_singular_byline( $content ) {
 	$pieces = array();
 
-	$pieces[] = 'Courtesy of ' . the_author_posts_link() . ' of ' . midship_get_accredited_source_link();
+	$pieces[] = 'Courtesy of ' . apply_filters( 'the_author_posts_link', 'http://www.google.com' ) . ' of ' . midship_get_accredited_source_link();
 	$pieces[] = '<a href="print/">Print</a>';
 	$new_content = implode( ' | ' , $pieces );
 	return '<p>' . $new_content . '</p>' . $content;
