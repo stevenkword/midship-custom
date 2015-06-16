@@ -188,7 +188,9 @@ function midship_get_singular_byline() {
 
 	// Print
 	if( ! function_exists( 'is_print' ) || ! is_print() ) {
-		$pieces[] = '<a href="print/">Print</a>';
+		global $post;
+		$link = get_permalink( $post->ID );
+		$pieces[] = '<a href="'.$link.'print/">Print</a>';
 	}
 
 	$new_content = implode( ' | ' , $pieces );
