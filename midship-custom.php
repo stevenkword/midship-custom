@@ -164,7 +164,11 @@ function midship_filter_the_author_posts_link ( $link ){
  * @return [type]          [description]
  */
 function midship_singular_byline( $content ) {
-	$new_content = '<p>Courtesy of ' . get_the_author_link() . ' of ' . midship_get_accredited_source_link() . '</p>';
+	$pieces = array();
+
+	$pieces[] = 'Courtesy of ' . get_the_author_link() . ' of ' . midship_get_accredited_source_link();
+	$pieces[] = '<a href="print/">Print</a>';
+	$new_content = implode( ' | ' , $pieces );
 	return $new_content . $content;
 }
 add_filter( 'the_content', 'midship_singular_byline', 10 );
