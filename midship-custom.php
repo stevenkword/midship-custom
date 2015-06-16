@@ -249,7 +249,7 @@ function midship_banner_ad( $content ){
 
 		return $ad . $content;
 }
-add_filter( 'the_content', 'midship_banner_ad', 9 );
+//add_filter( 'the_content', 'midship_banner_ad', 9 );
 
 /**
  * [midship_content_disclaimer description]
