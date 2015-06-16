@@ -165,7 +165,7 @@ function midship_filter_the_author_posts_link ( $link ){
  */
 function midship_singular_byline( $content ) {
 	$pieces = array();
-
+the_author_link();
 	$pieces[] = 'Courtesy of ' . get_the_author_link() . ' of ' . midship_get_accredited_source_link();
 	$pieces[] = '<a href="print/">Print</a>';
 	$new_content = implode( ' | ' , $pieces );
