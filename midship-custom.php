@@ -175,7 +175,7 @@ function midship_accredit_source( $content ) {
 	$link  = get_post_meta( $post->ID, 'linkSourceURL', true );
 
 	if( $link ) {
-		$content = '<p class="post-byline">' the_author_posts_link() .' at <a target="_blank" href="' . esc_url($link) . '">' . esc_html($title) . '</a>' . ' &middot; ' . the_time(get_option('date_format')) . '</p>' . $content;
+		$content = '<p class="post-byline">' . the_author_posts_link() .' at <a target="_blank" href="' . esc_url($link) . '">' . esc_html($title) . '</a>' . ' &middot; ' . the_time(get_option('date_format')) . '</p>' . $content;
 		return $content;
 	}
 }
