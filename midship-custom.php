@@ -240,7 +240,7 @@ function midship_render_content_header( $content ){
 		return $content;
 	}
 
-	//$new_content = midship_get_singular_byline();
+	$new_content = midship_get_singular_byline();
 
 	return $new_content . $content;
 
