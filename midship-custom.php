@@ -162,7 +162,7 @@ add_filter( 'the_author_posts_link', 'midship_filter_the_author_posts_link' );
 function midship_singular_byline( $content ){
 	return midship_get_accredited_source_link() . $content;
 }
-//add_filter( 'the_content', 'midship_singular_byline', 10 );
+add_filter( 'the_content', 'midship_singular_byline', 10 );
 
 /**
  * [midship_get_accredited_source description]
@@ -197,9 +197,9 @@ function midship_accredit_source( $content ) {
 	$link  = get_post_meta( $post->ID, 'linkSourceURL', true );
 
 	if( $link ) {
-		$content .= '<p>Special Thanks to <a target="_blank" href="' . esc_url($link) . '">' . esc_html($title) . '</a></p>' . $content;
-		return $content;
+		$content = '<p>Special Thanks to <a target="_blank" href="' . esc_url($link) . '">' . esc_html($title) . '</a></p>' . $content;
 	}
+
 	return $content;
 }
 add_filter( 'the_content', 'midship_accredit_source', 11 );
