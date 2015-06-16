@@ -201,7 +201,7 @@ function midship_accredit_source( $content ) {
 		return $content;
 	}
 }
-add_filter( 'the_content', 'midship_accredit_source', 11 );
+//add_filter( 'the_content', 'midship_accredit_source', 11 );
 
 /**
  * [midship_content_disclaimer description]
