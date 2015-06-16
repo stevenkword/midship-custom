@@ -40,32 +40,9 @@ function mynamespace_remove_xmlrpc_methods( $methods ) {
 }
 add_filter( 'xmlrpc_methods', 'mynamespace_remove_xmlrpc_methods');
 
-
-function testing( $page_templates, $this, $post ) {
-
-	echo '<pre>';
-	//var_dump( $this );
-	//var_dump( array( 'page-magic-widgets.php' => 'Magic Widgets' ) );
-	echo '</pre>';
-
-	$page_templates = array_merge( $page_templates, $page_templates );
-
-return $page_templates;
-
-	echo '<pre>';
-	var_dump( $page_templates );
-	echo '</pre>';
-
-	return $page_templates;
-
-	//apply_filters( 'theme_page_templates', $page_templates, $this, $post );
-}
-add_filter( 'theme_page_templates', 'testing', 99, 3 );
-
-
 function midship_add_fonts() {
 	?>
-	<link href='http://fonts.googleapis.com/css?family=Lato|PT+Sans|Ubuntu|Josefin+Sans|Open+Sans|Play|Inconsolata|Oxygen' rel='stylesheet' type='text/css'>
+	<link href='http://fonts.googleapis.com/css?family=Roboto|Lato|PT+Sans|Ubuntu|Josefin+Sans|Open+Sans|Play|Inconsolata|Oxygen' rel='stylesheet' type='text/css'>
 	<?php
 }
 add_action( 'wp_head', 'midship_add_fonts', 99 );
@@ -195,6 +172,9 @@ function midship_accredit_source( $content ) {
 		if( $link ) {
 				$content = '<p>Special Thanks to <a target="_blank" href="' . esc_url($link) . '">' . esc_html($title) . '</a></p>' . $content;
 		}
+
+		$content .= '<div style="border:1px solid #ccc; background: #eee;padding:1em;"><p>This documentation in no way replaces the Toyota MR2 Repair Manuals. The purpose of this content is only to provide supplementary information to fellow MR2 enthusiasts. Midship Runabout and its contributing authors will not be held responsible for any injury or damages that may occur as the result of practicing any of the methods or procedures described within this website. Article and photo submissions are property of the contributing author.</p><!--wp-print-friendly--><div style="text-align:center;padding-bottom:1em;"><a href="print/" class="button"><button>Print this guide!</button></a></div><!--/wp-print-friendly--></div><br/>';
+
 		return $content;
 }
 add_filter( 'the_content', 'midship_accredit_source' );
