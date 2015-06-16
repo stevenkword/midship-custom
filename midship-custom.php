@@ -163,8 +163,8 @@ add_filter( 'the_author_posts_link', 'midship_filter_the_author_posts_link' );
  * @return [type]          [description]
  */
 function midship_singular_byline( $content ) {
-	return $content;
-	if( ! is_singlular() ){
+
+	if( is_front_page() || is_archive() || is_tax() || ! is_singlular() ){
 		return $content;
 	}
 
