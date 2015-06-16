@@ -155,7 +155,7 @@ function midship_filter_the_author_posts_link ( $link ){
 
 	//return $link;
 }
-//add_filter( 'the_author_posts_link', 'midship_filter_the_author_posts_link' );
+add_filter( 'the_author_posts_link', 'midship_filter_the_author_posts_link' );
 
 
 /**
