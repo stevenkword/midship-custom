@@ -277,8 +277,6 @@ function midship_render_content_footer( $content ){
 	if( ! is_singular() || ( function_exists( 'is_print' ) && is_print() ) ) {
 		return $content;
 	}
-
-	$content .= midship_get_banner_ad();
 	$content .= midship_get_content_disclaimer();
 	return $content;
 }
