@@ -231,18 +231,18 @@ function midship_get_accredited_source() {
 	return $content;
 }
 
-function midship_banner_ad( $content ){
+function midship_get_banner_ad( $content ){
 		$ad = '<div style="width:100%"><script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<!-- Midshiprunabout Banner -->
-<ins class="adsbygoogle"
-     style="display:inline-block;width:728px;height:90px"
-     data-ad-client="ca-pub-4187229811122687"
-     data-ad-slot="1168349906"></ins>
-<script>
-(adsbygoogle = window.adsbygoogle || []).push({});
-</script></div>';
+		<!-- Midshiprunabout Banner -->
+		<ins class="adsbygoogle"
+		     style="display:inline-block;width:728px;height:90px"
+		     data-ad-client="ca-pub-4187229811122687"
+		     data-ad-slot="1168349906"></ins>
+		<script>
+		(adsbygoogle = window.adsbygoogle || []).push({});
+		</script></div>';
 
-		return $ad . $content;
+		return $ad;
 }
 
 /**
@@ -278,6 +278,7 @@ function midship_render_content_footer( $content ){
 		return $content;
 	}
 
+	$content .= midship_get_banner_ad();
 	$content .= midship_get_content_disclaimer();
 	return $content;
 }
