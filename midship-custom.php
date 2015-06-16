@@ -180,12 +180,17 @@ function midship_singular_byline( $content ) {
 
 	$pieces = array();
 
+	// Credit
 	if( $credit = midship_get_accredited_source_link() ) {
 		$pieces[] = 'Courtesy of ' . $link . ' of ' . $credit ;
 	} else {
 		$pieces[] = 'Courtesy of ' . $link;
 	}
 
+	// Date
+	$pieces[] =  get_the_date();
+
+	// Print
 	if( ! function_exists( 'is_print' ) || ! is_print() ) {
 		$pieces[] = '<a href="print/">Print</a>';
 	}
