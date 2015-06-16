@@ -162,7 +162,7 @@ add_filter( 'the_author_posts_link', 'midship_filter_the_author_posts_link' );
 function midship_singular_byline( $content ) {
 
 
-	$content = get_the_author_link() . ' of ' . midship_get_accredited_source_link() . $content;
+	$content = 'Courtesy of ' . get_the_author_link() . ' via ' . midship_get_accredited_source_link() . $content;
 
 
 	return $content;
