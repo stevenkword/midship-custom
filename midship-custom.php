@@ -169,7 +169,7 @@ function midship_singular_byline( $content ) {
 	$pieces[] = 'Courtesy of ' . get_the_author_link() . ' of ' . midship_get_accredited_source_link();
 	$pieces[] = '<a href="print/">Print</a>';
 	$new_content = implode( ' | ' , $pieces );
-	return $new_content . $content;
+	return '<p>' . $new_content . '</p>' . $content;
 }
 add_filter( 'the_content', 'midship_singular_byline', 10 );
 
