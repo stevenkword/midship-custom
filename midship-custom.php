@@ -175,8 +175,11 @@ function midship_singular_byline( $content ) {
 
 	$pieces = array();
 
-
-	$pieces[] = 'Courtesy of ' . $link . ' of ' . midship_get_accredited_source_link();
+	if( $credit = midship_get_accredited_source_link() ) {
+		$pieces[] = 'Courtesy of ' . $link . ' of ' . $credit ;
+	} else {
+		$pieces[] = 'Courtesy of ' . $link;
+	}
 	$pieces[] = '<a href="print/">Print</a>';
 	$new_content = implode( ' | ' , $pieces );
 	return '<p>' . $new_content . '</p>' . $content;
