@@ -200,6 +200,7 @@ function midship_accredit_source( $content ) {
 		$content .= '<p>Special Thanks to <a target="_blank" href="' . esc_url($link) . '">' . esc_html($title) . '</a></p>' . $content;
 		return $content;
 	}
+	return $content;
 }
 add_filter( 'the_content', 'midship_accredit_source', 11 );
 
