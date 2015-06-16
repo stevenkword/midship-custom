@@ -238,15 +238,14 @@ function midship_accredit_source( $content ) {
 
 function midship_banner_ad( $content ){
 		$ad = '<div style="width:100%"><script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-		<!-- Midship Responsive -->
-		<ins class="adsbygoogle"
-		     style="display:block"
-		     data-ad-client="ca-pub-4187229811122687"
-		     data-ad-slot="7398026302"
-		     data-ad-format="auto"></ins>
-		<script>
-		(adsbygoogle = window.adsbygoogle || []).push({});
-		</script></div>';
+<!-- Midshiprunabout Banner -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:728px;height:90px"
+     data-ad-client="ca-pub-4187229811122687"
+     data-ad-slot="1168349906"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script></div>';
 
 		return $ad . $content;
 }
