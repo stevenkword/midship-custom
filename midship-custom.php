@@ -162,11 +162,7 @@ add_filter( 'the_author_posts_link', 'midship_filter_the_author_posts_link' );
  * @param  [type] $content [description]
  * @return [type]          [description]
  */
-function midship_singular_byline( $content ) {
-
-	if( is_front_page() || is_archive() || is_tax() ){
-		return $content;
-	}
+function midship_get_singular_byline() {
 
 	global $authordata;
 	if ( !is_object( $authordata ) )
@@ -196,9 +192,8 @@ function midship_singular_byline( $content ) {
 	}
 
 	$new_content = implode( ' | ' , $pieces );
-	return '<p class="post-byline post-info">' . $new_content . '</p>' . $content;
+	return '<p class="post-byline post-info">' . $new_content . '</p>';
 }
-add_filter( 'the_content', 'midship_singular_byline', 10 );
 
 /**
  * [midship_get_accredited_source description]
@@ -213,22 +208,6 @@ function midship_get_accredited_source_link( $post_id = '' ) {
 	$title = get_post_meta( $post_id, 'linkWebsiteTitle', true );
 	$link  = get_post_meta( $post_id, 'linkSourceURL', true );
 	return '<a href src="' . $link . '"">' . $title . '</a>';
-}
-
-/**
- * Attribute the original Source Aricle
- *
- * @param  [type] $content [description]
- * @return [type]          [description]
- */
-function midship_get_accredited_source() {
-	global $post;
-	$title = get_post_meta( $post->ID, 'linkWebsiteTitle', true );
-	$link  = get_post_meta( $post->ID, 'linkSourceURL', true );
-	if( $link ) {
-		$content = '<p>Special Thanks to <a target="_blank" href="' . esc_url($link) . '">' . esc_html($title) . '</a></p>' . $content;
-	}
-	return $content;
 }
 
 function midship_get_banner_ad( $content ){
@@ -261,7 +240,7 @@ function midship_render_content_header( $content ){
 		return $content;
 	}
 
-	$new_content = midship_get_accredited_source();
+	$new_content = midship_get_singular_byline();
 
 	return $new_content . $content;
 
