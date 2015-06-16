@@ -163,9 +163,20 @@ add_filter( 'the_author_posts_link', 'midship_filter_the_author_posts_link' );
  * @return [type]          [description]
  */
 function midship_singular_byline( $content ) {
+	global $authordata;
+	if ( !is_object( $authordata ) )
+		return false;
+	$link = sprintf(
+		'<a href="%1$s" title="%2$s" rel="author">%3$s</a>',
+		esc_url( get_author_posts_url( $authordata->ID, $authordata->user_nicename ) ),
+		esc_attr( sprintf( __( 'Posts by %s' ), get_the_author() ) ),
+		get_the_author()
+	);
+
 	$pieces = array();
 
-	$pieces[] = 'Courtesy of ' . apply_filters( 'the_author_posts_link', 'http://www.google.com' ) . ' of ' . midship_get_accredited_source_link();
+
+	$pieces[] = 'Courtesy of ' . $link . ' of ' . midship_get_accredited_source_link();
 	$pieces[] = '<a href="print/">Print</a>';
 	$new_content = implode( ' | ' , $pieces );
 	return '<p>' . $new_content . '</p>' . $content;
