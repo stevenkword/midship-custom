@@ -166,7 +166,7 @@ add_filter( 'the_author_posts_link', 'midship_filter_the_author_posts_link' );
 function midship_accredit_source( $content ) {
 	// Only show on single article pages
 	if( ! is_singular() ) {
-		return;
+		return $content;
 	}
 
 	global $post;
@@ -179,7 +179,7 @@ function midship_accredit_source( $content ) {
 		return $content;
 	}
 }
-add_filter( 'the_content', 'midship_accredit_source' );
+add_filter( 'the_content', 'midship_accredit_source', 20 );
 
 /**
  * [midship_content_disclaimer description]
@@ -189,10 +189,10 @@ add_filter( 'the_content', 'midship_accredit_source' );
 function midship_content_disclaimer( $content ) {
 	// Only show on single article pages
 	if( ! is_singular() ) {
-		return;
+		return $content;
 	}
 
 	$content .= esc_html( '<div style="border:1px solid #ccc; background: #eee;padding:1em;"><p>This documentation in no way replaces the Toyota MR2 Repair Manuals. The purpose of this content is only to provide supplementary information to fellow MR2 enthusiasts. Midship Runabout and its contributing authors will not be held responsible for any injury or damages that may occur as the result of practicing any of the methods or procedures described within this website. Article and photo submissions are property of the contributing author.</p><!--wp-print-friendly--><div style="text-align:center;padding-bottom:1em;"><a href="print/" class="button"><button>Print this guide!</button></a></div><!--/wp-print-friendly--></div><br/>' );
 	return $content;
 }
-add_filter( 'the_content', 'midship_accredit_source', 11 );
+add_filter( 'the_content', 'midship_accredit_source', 20 );
