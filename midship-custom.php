@@ -159,8 +159,8 @@ add_filter( 'the_author_posts_link', 'midship_filter_the_author_posts_link' );
 
 
 
-function midship_singular_byline(){
-	echo midship_get_accredited_source_link();
+function midship_singular_byline( $content ){
+	return midship_get_accredited_source_link() . $content;
 }
 add_filter( 'the_content', 'midship_singular_byline', 12 );
 
