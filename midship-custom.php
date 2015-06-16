@@ -175,7 +175,7 @@ function midship_accredit_source( $content ) {
 	$link  = get_post_meta( $post->ID, 'linkSourceURL', true );
 
 	if( $link ) {
-		$content = '<p>Special Thanks to <a target="_blank" href="' . esc_url($link) . '">' . esc_html($title) . '</a></p>' . $content;
+		$content = '<p class="post-byline">' . _e( 'by','magaziner' ) . ' ' . the_author_posts_link() . ' &middot; ' . the_time(get_option('date_format')) . 'Special Thanks to <a target="_blank" href="' . esc_url($link) . '">' . esc_html($title) . '</a></p>' . $content;
 		return $content;
 	}
 }
