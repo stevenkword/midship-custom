@@ -157,6 +157,28 @@ function midship_filter_the_author_posts_link ( $link ){
 }
 add_filter( 'the_author_posts_link', 'midship_filter_the_author_posts_link' );
 
+
+
+function midship_singular_byline(){
+	echo midship_get_accredited_source_link();
+}
+add_filter( 'the_content', 'midship_singular_byline', 12 );
+
+/**
+ * [midship_get_accredited_source description]
+ * @param  string $post_id [description]
+ * @return [type]          [description]
+ */
+function midship_get_accredited_source_link( $post_id = '' ) {
+	if( empty( $post_id ) ) {
+		global $post;
+		$post_id = $post->ID;
+	}
+	$title = get_post_meta( $post_id, 'linkWebsiteTitle', true );
+	$link  = get_post_meta( $post_id, 'linkSourceURL', true );
+	return '<a href src="' . $link . '"">' . $title . '</a>';
+}
+
 /**
  * Attribute the original Source Aricle
  *
