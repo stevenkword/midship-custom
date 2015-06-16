@@ -232,7 +232,7 @@ function midship_get_banner_ad( $content ){
 function midship_get_content_disclaimer() {
 
 	ob_start();
-	wp_link_pages(array('before' => '<div class="pagination">', 'after' => '</div>', 'link_before'  => '<span class="current"><span class="currenttext">', 'link_after' => '</span></span>', 'next_or_number' => 'next_and_number', 'nextpagelink' => __('Next','mythemeshop'), 'previouspagelink' => __('Previous','mythemeshop'), 'pagelink' => '%','echo' => 1 ));
+	wp_link_pages(array('before' => '<div class="pagination" style="float:none;">', 'after' => '</div>', 'link_before'  => '<span class="current"><span class="currenttext">', 'link_after' => '</span></span>', 'next_or_number' => 'next_and_number', 'nextpagelink' => __('Next','mythemeshop'), 'previouspagelink' => __('Previous','mythemeshop'), 'pagelink' => '%','echo' => 1 ));
 	$wp_link_pages = ob_get_clean();
 
 	$content .= $wp_link_pages;
@@ -250,7 +250,7 @@ function midship_render_content_header( $content ){
 	$new_content = midship_get_singular_byline();
 
 	ob_start();
-	wp_link_pages(array('before' => '<div class="pagination">', 'after' => '</div>', 'link_before'  => '<span class="current"><span class="currenttext">', 'link_after' => '</span></span>', 'next_or_number' => 'next_and_number', 'nextpagelink' => __('Next','mythemeshop'), 'previouspagelink' => __('Previous','mythemeshop'), 'pagelink' => '%','echo' => 1 ));
+	wp_link_pages(array('before' => '<div class="pagination" style="float:none;">', 'after' => '</div>', 'link_before'  => '<span class="current"><span class="currenttext">', 'link_after' => '</span></span>', 'next_or_number' => 'next_and_number', 'nextpagelink' => __('Next','mythemeshop'), 'previouspagelink' => __('Previous','mythemeshop'), 'pagelink' => '%','echo' => 1 ));
 	$wp_link_pages = ob_get_clean();
 
 	return $new_content . $wp_link_pages . $content;
