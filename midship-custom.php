@@ -196,7 +196,7 @@ function midship_singular_byline( $content ) {
 	}
 
 	$new_content = implode( ' | ' , $pieces );
-	return '<p>' . $new_content . '</p>' . $content;
+	return '<p class="post-byline post-info">' . $new_content . '</p>' . $content;
 }
 add_filter( 'the_content', 'midship_singular_byline', 10 );
 
