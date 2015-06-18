@@ -27,6 +27,20 @@ array(3) {
 }
 */
 
+/**
+ * Replace all site titles to include MR2 for SEO
+ * @param  [type] $info [description]
+ * @param  [type] $show [description]
+ * @return [type]       [description]
+ */
+function midship_replace_description($info, $show) {
+	if ( $show == 'name' ) {
+		$info .= ': MR2';
+	}
+	return $info;
+}
+add_filter('bloginfo','midship_replace_description',10,2);
+
 function midship_restrict_xmlrpc_login(){
 	if( defined( 'XMLRPC_REQUEST' ) && XMLRPC_REQUEST ) {
 		die( 'f this noise' );
