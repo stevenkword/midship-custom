@@ -34,6 +34,10 @@ array(3) {
  * @return [type]       [description]
  */
 function midship_replace_description($info, $show) {
+	//Except on the homepage
+	if( is_home() || is_front_page() ) {
+		return $info;
+	}
 	if ( $show == 'name' ) {
 		$info .= ': MR2';
 	}
