@@ -209,6 +209,7 @@ function midship_get_accredited_source_link( $post_id = '' ) {
 	}
 	$title = get_post_meta( $post_id, 'linkWebsiteTitle', true );
 	$link  = get_post_meta( $post_id, 'linkSourceURL', true );
+	return $title;
 	return '<a href src="' . $link . '"">' . $title . '</a>';
 }
 
@@ -258,7 +259,7 @@ function midship_render_content_header( $content ){
 	return $new_content . $wp_link_pages . $content;
 
 }
-add_filter( 'the_content', 'midship_render_content_header', 9 );
+add_filter( 'the_content', 'midship_render_content_header', 1 ); // needs to be early for auto links
 
 /**
  * [midship_render_content_footer description]
