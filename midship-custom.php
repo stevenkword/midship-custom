@@ -37,7 +37,7 @@ function midship_filter_wp_title( $title, $sep ) {
 	if( is_home() || is_front_page() ) {
 		return $title;
 	}
-	return 'MR2 ' . $title . $sep . get_bloginfo( 'name' );
+	return 'MR2 ' . $title;
 }
 add_filter( 'wp_title', 'midship_filter_wp_title' );
 
