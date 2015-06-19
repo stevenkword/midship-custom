@@ -29,30 +29,17 @@ array(3) {
 
 /**
  * Replace all site titles to include MR2 for SEO
- * @param  [type] $info [description]
- * @param  [type] $show [description]
- * @return [type]       [description]
+ * @param  [type] $title [description]
+ * @return [type]        [description]
  */
-function midship_replace_description($info, $show) {
+function midship_filter_wp_title( $title ) {
 	//Except on the homepage
 	if( is_home() || is_front_page() ) {
-		return $info;
+		return $title;
 	}
-	if ( $show == 'name' ) {
-		$info .= ': MR2';
-	}
-	return $info;
+	return 'MR2 ' . get_bloginfo( 'description' ) . ' | ' . get_bloginfo( 'name' );
 }
-add_filter('bloginfo','midship_replace_description',10,2);
-
-function baw_hack_wp_title_for_home( $title ) {
-	return 'test';
-	if( empty( $title ) && ( is_home() || is_front_page() ) ) {
-	return __( 'Home', 'theme_domain' ) . ' | ' . get_bloginfo( 'description' );
-	}
-	return $title;
-}
-add_filter( 'wp_title', 'baw_hack_wp_title_for_home' );
+add_filter( 'wp_title', 'midship_filter_wp_title' );
 
 
 function midship_restrict_xmlrpc_login(){
