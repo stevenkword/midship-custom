@@ -32,12 +32,12 @@ array(3) {
  * @param  [type] $title [description]
  * @return [type]        [description]
  */
-function midship_filter_wp_title( $title ) {
+function midship_filter_wp_title( $title, $sep ) {
 	//Except on the homepage
 	if( is_home() || is_front_page() ) {
 		return $title;
 	}
-	return 'MR2 ' . get_the_title() . ' | ' . get_bloginfo( 'name' );
+	return 'MR2 ' . $title . $sep . get_bloginfo( 'name' );
 }
 add_filter( 'wp_title', 'midship_filter_wp_title' );
 
