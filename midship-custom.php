@@ -45,6 +45,16 @@ function midship_replace_description($info, $show) {
 }
 add_filter('bloginfo','midship_replace_description',10,2);
 
+function baw_hack_wp_title_for_home( $title ) {
+	return 'test';
+	if( empty( $title ) && ( is_home() || is_front_page() ) ) {
+	return __( 'Home', 'theme_domain' ) . ' | ' . get_bloginfo( 'description' );
+	}
+	return $title;
+}
+add_filter( 'wp_title', 'baw_hack_wp_title_for_home' );
+
+
 function midship_restrict_xmlrpc_login(){
 	if( defined( 'XMLRPC_REQUEST' ) && XMLRPC_REQUEST ) {
 		die( 'f this noise' );
