@@ -39,7 +39,7 @@ function midship_filter_wp_title( $title, $sep ) {
 	}
 	return 'MR2 ' . $title;
 }
-add_filter( 'wp_title', 'midship_filter_wp_title' );
+add_filter( 'wp_title', 'midship_filter_wp_title', 10, 2 );
 
 
 function midship_restrict_xmlrpc_login(){
@@ -191,11 +191,15 @@ function midship_get_singular_byline() {
 
 	$pieces = array();
 
-	// Credit
-	if( $credit = midship_get_accredited_source_link() ) {
-		$pieces[] = 'Courtesy of ' . $link . ' of ' . $credit ;
-	} else {
-		$pieces[] = 'Courtesy of ' . $link;
+	// Article Attributioni & Credit
+	$author_credit = 'Courtesy of ';
+	$source_credit = midship_get_accredited_source_link();
+	if( ! empty( wp_strip_all_tags( $link ) ) && ! empty( $source_credit ) ) {
+		$pieces[] = $author_credit . $link . ' of ' . $source_credit;
+	} elseif ( ! empty( wp_strip_all_tags( $link ) ) ) {
+		$pieces[] = $author_credit . $link;
+	} elseif ( ! empty( $source_credit ) ) {
+		$pieces[] = $author_credit . $source_credit;
 	}
 
 	// Date
