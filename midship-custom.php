@@ -37,7 +37,7 @@ function midship_filter_wp_title( $title ) {
 	if( is_home() || is_front_page() ) {
 		return $title;
 	}
-	return 'MR2 ' . get_bloginfo( 'description' ) . ' | ' . get_bloginfo( 'name' );
+	return 'MR2 ' . get_the_title(); . ' | ' . get_bloginfo( 'name' );
 }
 add_filter( 'wp_title', 'midship_filter_wp_title' );
 
