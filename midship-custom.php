@@ -302,7 +302,7 @@ function midship_render_content_footer( $content ){
 	$content .= '<p>' . $pagination . '</p>';
 	*/
 
-	$content .= midship_get_pagination();
+	$content .= '<p>' . midship_get_pagination() . '</p>';
 	$content .= midship_get_content_disclaimer();
 	return $content;
 }
