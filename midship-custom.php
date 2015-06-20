@@ -286,8 +286,8 @@ function midship_render_content_header( $content ){
 	$new_content = midship_get_singular_byline();
 
 	ob_start();
-	if ( function_exists( 'pgntn_display_pagination' ) ){
-		pgntn_display_pagination( 'multipage' );
+	if ( function_exists( 'wp_pagenavi' ) ){
+		wp_pagenavi( array( 'type' => 'multipart' ) );
 	}
 	$pagination = ob_get_clean();
 
