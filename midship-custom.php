@@ -272,7 +272,12 @@ function midship_pagination( $content ){
 	if( ! is_singular() ) {
 		return $content;
 	}
-	return ' test' . $content . ' test';
+
+	if ( function_exists( 'pgntn_display_pagination' ) ){
+		$pagination = pgntn_display_pagination( 'multipage' );
+	}
+
+	return $pagination . $content . $pagination;
 }
 add_filter( 'the_content', 'midship_pagination', 2 );
 
