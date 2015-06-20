@@ -285,13 +285,17 @@ function midship_render_content_header( $content ){
 
 	$new_content = midship_get_singular_byline();
 
+	// Pagination
+	/*
 	ob_start();
 	if ( function_exists( 'wp_pagenavi' ) ){
 		wp_pagenavi( array( 'type' => 'multipart' ) );
 	}
 	$pagination = ob_get_clean();
+	$new_content .= '<p>' . $pagination . '</p>';
+	*/
 
-	return $new_content . '<p>' . $pagination . '</p>' . $content;
+	return $new_content . $content;
 
 }
 add_filter( 'the_content', 'midship_render_content_header', 1 ); // needs to be early for auto links
