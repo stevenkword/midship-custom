@@ -263,6 +263,19 @@ function midship_get_content_disclaimer() {
 	return $content;
 }
 
+/**
+ * [midship_pagination description]
+ * @param  [type] $content [description]
+ * @return [type]          [description]
+ */
+function midship_pagination( $content ){
+	if( ! is_singular() ) {
+		return $content;
+	}
+	return ' test' . $content . ' test';
+}
+add_filter( 'the_content', 'midship_render_content_header', 2 );
+
 function midship_render_content_header( $content ){
 	// Only show on single article pages, but not print pages
 	if( ! is_singular() || ( function_exists( 'is_print' ) && is_print() ) ) {
