@@ -323,7 +323,7 @@ function midship_render_content_footer( $content ){
 	$content .= midship_get_content_disclaimer();
 	return $content;
 }
-//add_filter( 'the_content', 'midship_render_content_footer', 11 );
+add_filter( 'the_content', 'midship_render_content_footer', 11 );
 
 
 
