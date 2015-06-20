@@ -305,6 +305,13 @@ function midship_render_content_footer( $content ){
 	if( ! is_singular() || ( function_exists( 'is_print' ) && is_print() ) ) {
 		return $content;
 	}
+
+	ob_start();
+	if ( function_exists( 'wp_pagenavi' ) ){
+		wp_pagenavi( array( 'type' => 'multipart' ) );
+	}
+	$pagination = ob_get_clean();
+	$content .= '<p>' . $pagination . '</p>';
 	$content .= midship_get_content_disclaimer();
 	return $content;
 }
