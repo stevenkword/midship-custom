@@ -252,13 +252,6 @@ function midship_get_banner_ad( $content ){
  * @return [type]          [description]
  */
 function midship_get_content_disclaimer() {
-
-	ob_start();
-	wp_link_pages(array('before' => '<div class="pagination" style="float:none;">', 'after' => '</div>', 'link_before'  => '<span class="current"><span class="currenttext">', 'link_after' => '</span></span>', 'next_or_number' => 'next_and_number', 'nextpagelink' => __('Next','mythemeshop'), 'previouspagelink' => __('Previous','mythemeshop'), 'pagelink' => '%','echo' => 1 ));
-	$wp_link_pages = ob_get_clean();
-
-	$content .= $wp_link_pages;
-
 	$content .= '<div style="border:1px solid #ccc; background: #eee;padding:1em;"><p>This documentation in no way replaces the Toyota MR2 Repair Manuals. The purpose of this content is only to provide supplementary information to fellow MR2 enthusiasts. Midship Runabout and its contributing authors will not be held responsible for any injury or damages that may occur as the result of practicing any of the methods or procedures described within this website. Article and photo submissions are property of the contributing author.</p><!--wp-print-friendly--><div style="text-align:center;padding-bottom:1em;"><a href="print/" class="button"><button>Print this guide!</button></a></div><!--/wp-print-friendly--></div><br/>';
 	return $content;
 }
@@ -268,34 +261,21 @@ function midship_get_content_disclaimer() {
  * @param  [type] $content [description]
  * @return [type]          [description]
  */
-function midship_pagination( $content ){
-	if ( is_singular() && function_exists( 'pgntn_display_pagination' ) ){
-		$pagination = pgntn_display_pagination( 'multipage' );
-		return $pagination . $content . $pagination;
+function midship_get_pagination() {
+	ob_start();
+	if ( function_exists( 'wp_pagenavi' ) ){
+		wp_pagenavi( array( 'type' => 'multipart' ) );
 	}
-	return $content;
+	$pagination = ob_get_clean();
+	return $pagination;
 }
-//add_filter( 'the_content', 'midship_pagination', 0 );
 
 function midship_render_content_header( $content ){
 	// Only show on single article pages, but not print pages
 	if( ! is_singular() || ( function_exists( 'is_print' ) && is_print() ) ) {
 		return $content;
 	}
-
-	$new_content = midship_get_singular_byline();
-
-	// Pagination
-	/*
-	ob_start();
-	if ( function_exists( 'wp_pagenavi' ) ){
-		wp_pagenavi( array( 'type' => 'multipart' ) );
-	}
-	$pagination = ob_get_clean();
-	$new_content .= '<p>' . $pagination . '</p>';
-	*/
-
-	return $new_content . $content;
+	return midship_get_singular_byline() . '<p>' . midship_get_pagination() . '</p>' . $content;
 
 }
 add_filter( 'the_content', 'midship_render_content_header', 1 ); // needs to be early for auto links
