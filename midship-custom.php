@@ -291,7 +291,7 @@ function midship_render_content_header( $content ){
 	}
 	$pagination = ob_get_clean();
 
-	return $new_content . $pagination . $content;
+	return $new_content . '<p>' . $pagination . '</p>' . $content;
 
 }
 add_filter( 'the_content', 'midship_render_content_header', 1 ); // needs to be early for auto links
