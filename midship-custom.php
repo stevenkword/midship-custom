@@ -275,8 +275,10 @@ function midship_render_content_header( $content ){
 	if( ! is_singular() || ( function_exists( 'is_print' ) && is_print() ) ) {
 		return $content;
 	}
-	return midship_get_singular_byline() . '<p>' . midship_get_pagination() . '</p>' . $content;
 
+	$new_content = midship_get_singular_byline();
+	//$new_content .= '<p>' . midship_get_pagination() . '</p>';
+	return $new_content . $content;
 }
 add_filter( 'the_content', 'midship_render_content_header', 1 ); // needs to be early for auto links
 
@@ -300,6 +302,7 @@ function midship_render_content_footer( $content ){
 	$content .= '<p>' . $pagination . '</p>';
 	*/
 
+	$content .= midship_get_pagination();
 	$content .= midship_get_content_disclaimer();
 	return $content;
 }
