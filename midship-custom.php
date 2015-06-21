@@ -192,12 +192,13 @@ function midship_get_singular_byline() {
 	global $authordata;
 	if ( !is_object( $authordata ) )
 		return false;
-	$link = sprintf(
+	/*$link = sprintf(
 		'<a href="%1$s" title="%2$s" rel="author">%3$s</a>',
 		esc_url( get_author_posts_url( $authordata->ID, $authordata->user_nicename ) ),
 		esc_attr( sprintf( __( 'Posts by %s' ), get_the_author() ) ),
 		get_the_author()
-	);
+	);*/
+	$link = get_the_author();
 
 	$pieces = array();
 
