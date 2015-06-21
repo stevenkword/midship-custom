@@ -39,11 +39,11 @@ function midship_filter_wp_title( $title, $sep ) {
 	}
 
 	$generation = '';
-	if( in_category( 'mk1' ) )  {
+	if( in_category( 'mk1' ) && is_singular() )  {
 		$generation = 'MK1 ';
-	} elseif( in_category( 'mk2' ) ) {
+	} elseif( in_category( 'mk2' ) && is_singular() ) {
 		$generation = 'MK2 ';
-	} elseif( in_category( 'mk3' ) ) {
+	} elseif( in_category( 'mk3' ) && is_singular() ) {
 		$generation = 'Spyder ';
 	}
 
