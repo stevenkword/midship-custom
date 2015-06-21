@@ -37,7 +37,17 @@ function midship_filter_wp_title( $title, $sep ) {
 	if( is_home() || is_front_page() ) {
 		return $title;
 	}
-	return 'MR2 ' . $title;
+
+	$generation = '';
+	if( in_category( 'mk1' ) )  {
+		$generation = 'MK1 ';
+	} elseif( in_category( 'mk2' ) ) {
+		$generation = 'MK2 ';
+	} elseif( in_category( 'mk3' ) ) {
+		$generation = 'Spyder ';
+	}
+
+	return 'MR2 ' . $generation .  $title;
 }
 add_filter( 'wp_title', 'midship_filter_wp_title', 10, 2 );
 
